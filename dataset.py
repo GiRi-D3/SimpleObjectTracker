@@ -8,9 +8,13 @@ from PIL import Image
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+from config import DATA_CONFIG, IMG_CONFIG
 
 class TrackingNetDataset(Dataset):
-    def __init__(self, root_dir, seq_length=5, transform=None, img_size=128):
+    def __init__(self, root_dir=DATA_CONFIG['root_dir'], 
+                 seq_length=DATA_CONFIG['seq_length'], 
+                 transform=None, 
+                 img_size=DATA_CONFIG['img_size']):
         self.root_dir = root_dir
         self.seq_length = seq_length
         self.transform = transform or transforms.Compose([
